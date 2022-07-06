@@ -3869,11 +3869,11 @@ function imgui.TextColoredRGB(string, max_float)
 			end
 			if text[0] then
 				for i, k in pairs(text) do
-					imgui.TextColored(color[i] or colors[clr.Text], u8(k))
+					imgui.TextColored(color[i] or colors[clr.Text], (k))
 					imgui.SameLine(nil, 0)
 				end
 				imgui.NewLine()
-			else imgui.Text(u8(w)) end
+			else imgui.Text(w) end
 		end
 	end
 	
