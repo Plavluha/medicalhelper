@@ -1,7 +1,7 @@
 script_name("MedicalHelper")
 script_authors("Kevin Hatiko edit by Neddie Barlow")
 script_description("Script for the Ministries of Health Arizona Brainburg")
-script_version("2.6")
+script_version("2.6.10")
 script_properties("work-in-pause")
 setver = 1
  
@@ -1620,7 +1620,7 @@ function imgui.OnDrawFrame()
 						elseif spurBig.v then
 							imgui.Dummy(imgui.ImVec2(0, 150))
 							imgui.SetCursorPosX(500)
-							imgui.TextColoredRGB("Включено большое окно")
+							imgui.TextColoredRGB(u8("Включено большое окно"))
 						elseif not spurBig.v and (spur.select_spur >= 1 and spur.select_spur <= 20) then
 							imgui.Dummy(imgui.ImVec2(0, 150))
 							imgui.SetCursorPosX(515)
@@ -1652,7 +1652,7 @@ function imgui.OnDrawFrame()
 						else
 						imgui.Dummy(imgui.ImVec2(0, 150))
 						imgui.SetCursorPosX(370)
-						imgui.TextColoredRGB("Нажмите на кнопку {FF8400}\"Добавить\"{FFFFFF}, чтобы создать новую шпоргалку\n\t\t\t\t\t\t\t\t\tили выберете уже существующий.")
+						imgui.TextColoredRGB(u8("Нажмите на кнопку {FF8400}\"Добавить\"{FFFFFF}, чтобы создать новую шпоргалку\n\t\t\t\t\t\t\t\t\tили выберете уже существующий."))
 						end
 
 				imgui.EndGroup()
@@ -1785,7 +1785,7 @@ function imgui.OnDrawFrame()
 								editKey = true
 							end 
 							imgui.SameLine()
-							imgui.TextColoredRGB("Активация: "..table.concat(rkeys.getKeysName(binder.key), " + "))
+							imgui.TextColoredRGB(u8("Активация: "..table.concat(rkeys.getKeysName(binder.key), " + ")))
 							imgui.DragFloat("##sleep", binder.sleep, 0.1, 0.5, 10.0, u8"Задержка = %.1f сек.")
 							imgui.SameLine()
 							if imgui.Button("-", imgui.ImVec2(20, 20)) and binder.sleep.v ~= 0.5 then binder.sleep.v = binder.sleep.v - 0.1 end
@@ -1854,7 +1854,7 @@ function imgui.OnDrawFrame()
 						
 						imgui.Dummy(imgui.ImVec2(0, 150))
 						imgui.SetCursorPosX(380)
-						imgui.TextColoredRGB("Нажмите на кнопку {FF8400}\"Добавить\"{FFFFFF}, чтобы создать новый бинд\n\t\t\t\t\t\t\t\tили выберете уже существующий.")
+						imgui.TextColoredRGB(u8("Нажмите на кнопку {FF8400}\"Добавить\"{FFFFFF}, чтобы создать новый бинд\n\t\t\t\t\t\t\t\tили выберете уже существующий."))
 						end
 
 				imgui.EndGroup()
@@ -1867,14 +1867,14 @@ function imgui.OnDrawFrame()
 					imgui.Separator()
 					--
 					imgui.Bullet(); imgui.SameLine()
-					imgui.TextColoredRGB("{FFB700}Вкладка \"Настройки\"")
+					imgui.TextColoredRGB(u8("{FFB700}Вкладка \"Настройки\""))
 					imgui.TextWrapped(u8"\tБазовые настройки, которые требуется выставить перед началом работы, самые главные которые из них \"Основная информация\".")
 					imgui.TextWrapped(u8"\tЦеновая политика актуальна для сервера Saint Rose, если у Вас сервер другой, пожалуйста измените значения.")
 					--
 					imgui.Bullet(); imgui.SameLine()
-					imgui.TextColoredRGB("{FFB700}Вкладка \"Шпоры\"")
-					imgui.TextWrapped(u8"\tМожно заполнять любого рода информацией, также можно самому создать текстовый файл в папке шпаргалок.")
-					imgui.TextColoredRGB("{5BF165}Открыть папку Шпаргалок")
+					imgui.TextColoredRGB(u8("{FFB700}Вкладка \"Шпоры\""))
+					imgui.TextWrapped(u8("\tМожно заполнять любого рода информацией, также можно самому создать текстовый файл в папке шпаргалок."))
+					imgui.TextColoredRGB(u8("{5BF165}Открыть папку Шпаргалок"))
 					if imgui.IsItemHovered() then 
 						imgui.SetTooltip(u8"Кликните, чтобы открыть папку.")
 					end
@@ -1883,21 +1883,21 @@ function imgui.OnDrawFrame()
 					end
 					--
 					imgui.Bullet(); imgui.SameLine()
-					imgui.TextColoredRGB("{FFB700}Вкладка \"Команды\"")
-					imgui.TextWrapped(u8"\tОсобенностью активацией команд является в том, что команды требующие в указании id игрока, могут быть активированы при сочетании наведнии мышки на игрока и нажатии бинд-активации. В резульате чего, команда автоматически введётся с указанным id игрока или откроется чат с введённым id.")
-					imgui.TextColoredRGB("\t\tДополнительные команды, не внесённые в раздел:")
-					imgui.TextColoredRGB("{FF5F29}/reload {FFFFFF}- команда для перезагрузки скрипта.")
-					imgui.TextColoredRGB("{FF5F29}/rl {FFFFFF}- независимая команда от скрипта, предназначенная для перезагрузки всей папки moonlaoder.")
-					imgui.TextColoredRGB("{FF5F29}/update {FFFFFF}- команда для получения информации об обновлений.")
-					imgui.TextColoredRGB("{FF5F29}/mhr-delete {FFFFFF} - удалить скрипт")
+					imgui.TextColoredRGB(u8("{FFB700}Вкладка \"Команды\""))
+					imgui.TextWrapped(u8("\tОсобенностью активацией команд является в том, что команды требующие в указании id игрока, могут быть активированы при сочетании наведнии мышки на игрока и нажатии бинд-активации. В резульате чего, команда автоматически введётся с указанным id игрока или откроется чат с введённым id."))
+					imgui.TextColoredRGB(u8("\t\tДополнительные команды, не внесённые в раздел:"))
+					imgui.TextColoredRGB(u8("{FF5F29}/reload {FFFFFF}- команда для перезагрузки скрипта."))
+					imgui.TextColoredRGB(u8("{FF5F29}/rl {FFFFFF}- независимая команда от скрипта, предназначенная для перезагрузки всей папки moonlaoder."))
+					imgui.TextColoredRGB(u8("{FF5F29}/update {FFFFFF}- команда для получения информации об обновлений."))
+					imgui.TextColoredRGB(u8("{FF5F29}/mhr-delete {FFFFFF} - удалить скрипт"))
 					--
 					imgui.Bullet(); imgui.SameLine()
-					imgui.TextColoredRGB("{FFB700}Вкладка \"Дискорд\"")
-					imgui.TextWrapped(u8"\tИнструкция по пользованию дискорда.")
+					imgui.TextColoredRGB(u8("{FFB700}Вкладка \"Дискорд\""))
+					imgui.TextWrapped(u8("\tИнструкция по пользованию дискорда."))
 					--
 					imgui.Separator()
 					imgui.Spacing()
-					imgui.TextColoredRGB("В случае возникновения проблемы с запуском скрипта попробуйте удалить файлы настроек после\n чего перезагрузить папку moonloader командой {67EE7E}/rl:\n\t{FF5F29}MainSetting.med \n\t{FF5F29}cmdSetting.med \n\t{FF5F29}bindSetting.med \n\tТакже папку {FF5F29}Binder")
+					imgui.TextColoredRGB(u8("В случае возникновения проблемы с запуском скрипта попробуйте удалить файлы настроек после\n чего перезагрузить папку moonloader командой {67EE7E}/rl:\n\t{FF5F29}MainSetting.med \n\t{FF5F29}cmdSetting.med \n\t{FF5F29}bindSetting.med \n\tТакже папку {FF5F29}Binder"))
 				imgui.EndChild()
 			end
 			--//////About
@@ -1910,25 +1910,25 @@ function imgui.OnDrawFrame()
 					imgui.TextWrapped(u8"\tСкрипт был разработан для проекта Ariona Role Play с поддержкой работы на сервере Saint Rose для облегчения работы сотрудникам больниц. Благодаря этому приложению Вы получите полный комплекс автоматизации многих действий и наслаждение от пользования.\nОбновления выходят по мере добавления нововведений и исправлений ошибок.")
 					imgui.Dummy(imgui.ImVec2(0, 10))
 					imgui.Bullet()
-					imgui.TextColoredRGB("Разработчик - {FFB700}Kevin Hatiko (edit by Neddie Barlow)")
+					imgui.TextColoredRGB(u8("Разработчик - {FFB700}Kevin Hatiko (edit by Neddie Barlow)"))
 					imgui.Bullet()
-					imgui.TextColoredRGB("Версия скрипта - {FFB700}".. scr.version)
+					imgui.TextColoredRGB(u8("Версия скрипта - {FFB700}".. scr.version))
 					imgui.Bullet()
-					imgui.TextColoredRGB("Благодарность blast.hk за методическую информацию и его пользователям в решении вопросов.")
+					imgui.TextColoredRGB(u8("Благодарность blast.hk за методическую информацию и его пользователям в решении вопросов."))
 						imgui.Dummy(imgui.ImVec2(0, 20))
 						imgui.SetCursorPosX(20)
 						imgui.Text(fa.ICON_BUG)
 						imgui.SameLine()
-						imgui.TextColoredRGB("Нашли баг или ошибку, или же хотите видеть что-то новое, напиши в группу"); imgui.SameLine(); imgui.Text(fa.ICON_ARROW_DOWN)
+						imgui.TextColoredRGB(u8("Нашли баг или ошибку, или же хотите видеть что-то новое, напиши в группу")); imgui.SameLine(); imgui.Text(fa.ICON_ARROW_DOWN)
 						imgui.SetCursorPosX(20)
 						imgui.Text(fa.ICON_LINK)
 						imgui.SameLine()
-						imgui.TextColoredRGB("Для связи: VK: {74BAF4} vk.com/plavluha Дискорд: BEBRA#6666") --или Discord - {74BAF4}TheVitek#2160")
+						imgui.TextColoredRGB(u8("Для связи: VK: {74BAF4} vk.com/plavluha Дискорд: BEBRA#6666"))
 							if imgui.IsItemHovered() then imgui.SetTooltip(u8"Кликните ЛКМ, чтобы скопировать, или ПКМ, чтобы открыть в браузере")  end
 							if imgui.IsItemClicked(0) then setClipboardText("https://vk.com/plavluha") end
 							if imgui.IsItemClicked(1) then print(shell32.ShellExecuteA(nil, 'open', 'https://vk.com/plavluha', nil, nil, 1)) end
 							imgui.SameLine()
-							imgui.TextColoredRGB("{68E15D}(наведи){FFFFFF}  Нажав в группе на {74BAF4}\"Написать сообщение\"")
+							imgui.TextColoredRGB(u8("{68E15D}(наведи){FFFFFF}  Нажав в группе на {74BAF4}\"Написать сообщение\""))
 						imgui.Spacing()
 						imgui.SetCursorPosX(20)
 						imgui.TextColored(imgui.ImColor(18, 220, 0, 200):GetVec4(), fa.ICON_MONEY)
@@ -1963,15 +1963,15 @@ function imgui.OnDrawFrame()
 				end
 				imgui.Dummy(imgui.ImVec2(0, 5))
 				imgui.SetCursorPosX(145)
-				imgui.TextColoredRGB("Небольшой гайд по пользованию голосовой программы {3EB2FF}Discrod")
+				imgui.TextColoredRGB(u8("Небольшой гайд по пользованию голосовой программы {3EB2FF}Discrod"))
 				imgui.Dummy(imgui.ImVec2(0, 20))
 				imgui.SetCursorPosX(10)
-				imgui.TextColoredRGB("{3EB2FF}Discord{FFFFFF} - это очень удобная программа, предназначенная для передачи, как голосовых, так и\n текстовых сообщений другим пользователям. В наше время, данная программа является самой \nпродвинутой и популярной с другими схожими ей приложениями.")
+				imgui.TextColoredRGB(u8("{3EB2FF}Discord{FFFFFF} - это очень удобная программа, предназначенная для передачи, как голосовых, так и\n текстовых сообщений другим пользователям. В наше время, данная программа является самой \nпродвинутой и популярной с другими схожими ей приложениями."))
 				imgui.Dummy(imgui.ImVec2(0, 10))
 				imgui.Bullet()
-				imgui.TextColoredRGB("{FAB428}Первое.\n\t{FFFFFF}Вам нужно будет зарегистрироваться и для удобства скачать программу на компьютер.")
+				imgui.TextColoredRGB(u8("{FAB428}Первое.\n\t{FFFFFF}Вам нужно будет зарегистрироваться и для удобства скачать программу на компьютер."))
 				imgui.SameLine()
-				imgui.TextColoredRGB("{29EB2F}Перейти")
+				imgui.TextColoredRGB(u8("{29EB2F}Перейти"))
 				if imgui.IsItemHovered() then 
 					imgui.SetTooltip(u8"Кликните, чтобы открыть ссылку.")
 				end
@@ -1984,31 +1984,31 @@ function imgui.OnDrawFrame()
 					imgui.Image(disSite, imgui.ImVec2(462, 212))
 				end
 				imgui.Bullet()
-				imgui.TextColoredRGB("{FAB428}Второе.\n\t{FFFFFF}Вам необходимо добавить голосовой канал сервера, на котором Вы находитесь.")
+				imgui.TextColoredRGB(u8("{FAB428}Второе.\n\t{FFFFFF}Вам необходимо добавить голосовой канал сервера, на котором Вы находитесь."))
 				imgui.SameLine()
-				imgui.TextColoredRGB("{29EB2F}Перейти")
+				imgui.TextColoredRGB(u8("{29EB2F}Перейти"))
 				if imgui.IsItemHovered() then 
 					imgui.SetTooltip(u8"Кликните, чтобы открыть ссылку.")
 				end
 				if imgui.IsItemClicked(0) then
 					print(shell32.ShellExecuteA(nil, 'open', 'https://discord.gg/brainburg', nil, nil, 1))
 				end
-				imgui.TextColoredRGB("Для этого перейдите по выше приведённой ссылке, где Вы сможете открыть ссылку на канал \nсервера. После перехода Вас перебросит на программу, если Вы её скачивали, где добавится \nсоотвествующий канал. Так как Вы являетесь новечком на канале, придётся подождать 10 минут \n{FAA158}перед тем, как сможете что либо писать.")   
+				imgui.TextColoredRGB(u8("Для этого перейдите по выше приведённой ссылке, где Вы сможете открыть ссылку на канал \nсервера. После перехода Вас перебросит на программу, если Вы её скачивали, где добавится \nсоотвествующий канал. Так как Вы являетесь новечком на канале, придётся подождать 10 минут \n{FAA158}перед тем, как сможете что либо писать."))   
 				imgui.Bullet()
-				imgui.TextColoredRGB("{FAB428}Третье.\n\t{FFFFFF}По истечению 10 минут Вы сможете писать в доступные каналы. Так как Вы являетесь \nсотрудником Больницы, необходимо запросить роль для доступа к голосовому каналу. \nДля этого требуется:")
+				imgui.TextColoredRGB(u8("{FAB428}Третье.\n\t{FFFFFF}По истечению 10 минут Вы сможете писать в доступные каналы. Так как Вы являетесь \nсотрудником Больницы, необходимо запросить роль для доступа к голосовому каналу. \nДля этого требуется:"))
 
-				imgui.TextColoredRGB("\t1. Нажмите на текстовый канал 'запрос ролей' и запросить роль ")
+				imgui.TextColoredRGB(u8("\t1. Нажмите на текстовый канал 'запрос ролей' и запросить роль "))
 				if disRole then
 					imgui.SetCursorPosX(25)
 					imgui.Image(disRole, imgui.ImVec2(586, 340))
 				end
-				imgui.TextColoredRGB("\t2. Попросите в игре сотрудника от 9 ранга и выше, чтобы выдали роль Вам, написав, что Вы\n запросили уже.")
-				imgui.TextColoredRGB("После выдачи роли Вам откроются новые каналы. Для этого слева листаете в самый низ. \nНа скриншоте видно, что имеется Текстовый канал, где можно общаться между сотрудниками,\nещё есть канал мз-инфо, где вы можете обратить внимание на новости в министерстве, \nтакже голосовой, где Вы сможете общаться голосом, но советуем установить активацию микрофона\n по клавише.")
+				imgui.TextColoredRGB(u8("\t2. Попросите в игре сотрудника от 9 ранга и выше, чтобы выдали роль Вам, написав, что Вы\n запросили уже."))
+				imgui.TextColoredRGB(u8("После выдачи роли Вам откроются новые каналы. Для этого слева листаете в самый низ. \nНа скриншоте видно, что имеется Текстовый канал, где можно общаться между сотрудниками,\nещё есть канал мз-инфо, где вы можете обратить внимание на новости в министерстве, \nтакже голосовой, где Вы сможете общаться голосом, но советуем установить активацию микрофона\n по клавише."))
 				if disMed then
 					imgui.SetCursorPosX(25)
 					imgui.Image(disMed, imgui.ImVec2(581, 301))
 				end
-				imgui.TextColoredRGB("\t3. Измените себе никнейм. Для этого на сервере кликните ЛКМ (левой кнопкой мыши) по названию сервера. \nПосле чего выберете пункт {F2D045}'Настр.профиль сервера'. {FFFFFF}Ник делаем по форме, к примеру\nВы сотрудник больницы СФ, делаем ник: {B3F637}[SFMC][Ваш ранг] Ник Нейм")
+				imgui.TextColoredRGB(u8("\t3. Измените себе никнейм. Для этого на сервере кликните ЛКМ (левой кнопкой мыши) по названию сервера. \nПосле чего выберете пункт {F2D045}'Настр.профиль сервера'. {FFFFFF}Ник делаем по форме, к примеру\nВы сотрудник больницы СФ, делаем ник: {B3F637}[SFMC][Ваш ранг] Ник Нейм"))
 				if disNick then
 					imgui.SetCursorPosX(25)
 					imgui.Image(disNick, imgui.ImVec2(354, 204))
@@ -2177,121 +2177,121 @@ function imgui.OnDrawFrame()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myID}")
 		imgui.SameLine()
 		if imgui.IsItemHovered(0) then setClipboardText("{myID}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш id - {ACFF36}"..tostring(myid))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш id - {ACFF36}"..tostring(myid)))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myNick}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myNick}");  end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш полный ник (по анг.) - {ACFF36}"..tostring(myNick:gsub("_"," ")))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш полный ник (по анг.) - {ACFF36}"..tostring(myNick:gsub("_"," "))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myRusNick}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myRusNick}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш ник, указанный в настройках - {ACFF36}"..tostring(u8:decode(buf_nick.v)))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш ник, указанный в настройках - {ACFF36}"..tostring(u8:decode(buf_nick.v))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myHP}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myHP}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш уровень ХП - {ACFF36}"..tostring(getCharHealth(PLAYER_PED)))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш уровень ХП - {ACFF36}"..tostring(getCharHealth(PLAYER_PED))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myArmo}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myArmo}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш текущий уровень брони - {ACFF36}"..tostring(getCharArmour(PLAYER_PED)))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш текущий уровень брони - {ACFF36}"..tostring(getCharArmour(PLAYER_PED))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myHosp}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myHosp}") end
-		imgui.TextColoredRGB("{C1C1C1} - название Вашей больницы - {ACFF36}"..tostring(u8:decode(chgName.org[num_org.v+1])))
+		imgui.TextColoredRGB(u8("{C1C1C1} - название Вашей больницы - {ACFF36}"..tostring(u8:decode(chgName.org[num_org.v+1]))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myHospEn}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myHospEn}") end
-		imgui.TextColoredRGB("{C1C1C1} - полное название Вашей больницы на анг. - {ACFF36}"..tostring(u8:decode(list_org_en[num_org.v+1])))
+		imgui.TextColoredRGB(u8("{C1C1C1} - полное название Вашей больницы на анг. - {ACFF36}"..tostring(u8:decode(list_org_en[num_org.v+1]))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myTag}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myTag}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваш тег  - {ACFF36}"..tostring(u8:decode(buf_teg.v)))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваш тег  - {ACFF36}"..tostring(u8:decode(buf_teg.v))))
 		
 		imgui.Spacing()		
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{myRank}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{myRank}") end
-		imgui.TextColoredRGB("{C1C1C1} - Ваша текущая должность - {ACFF36}"..tostring(u8:decode(chgName.rank[num_rank.v+1])))
+		imgui.TextColoredRGB(u8("{C1C1C1} - Ваша текущая должность - {ACFF36}"..tostring(u8:decode(chgName.rank[num_rank.v+1]))))
 		
 		imgui.Spacing()	
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{time}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{time}") end
-		imgui.TextColoredRGB("{C1C1C1} - время в формате часы:минуты:секунды - {ACFF36}"..tostring(os.date("%X")))
+		imgui.TextColoredRGB(u8("{C1C1C1} - время в формате часы:минуты:секунды - {ACFF36}"..tostring(os.date("%X"))))
 		
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{day}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{day}") end
-		imgui.TextColoredRGB("{C1C1C1} - текущий день месяца - {ACFF36}"..tostring(os.date("%d")))
+		imgui.TextColoredRGB(u8("{C1C1C1} - текущий день месяца - {ACFF36}"..tostring(os.date("%d"))))
 
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{week}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{week}") end
-		imgui.TextColoredRGB("{C1C1C1} - текущая неделя - {ACFF36}"..tostring(week[tonumber(os.date("%w"))+1]))
+		imgui.TextColoredRGB(u8("{C1C1C1} - текущая неделя - {ACFF36}"..tostring(week[tonumber(os.date("%w"))+1])))
 
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{month}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{month}") end
-		imgui.TextColoredRGB("{C1C1C1} - текущий месяц - {ACFF36}"..tostring(month[tonumber(os.date("%m"))]))
+		imgui.TextColoredRGB(u8("{C1C1C1} - текущий месяц - {ACFF36}"..tostring(month[tonumber(os.date("%m"))])))
 		--
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{getNickByTarget}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{getNickByTarget}") end
-		imgui.TextColoredRGB("{C1C1C1} - получает Ник игрока на которого последний раз целился.")
+		imgui.TextColoredRGB(u8("{C1C1C1} - получает Ник игрока на которого последний раз целился."))
 		--
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{target}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{target}") end
-		imgui.TextColoredRGB("{C1C1C1} - последний ID игрока, на которого целился (наведена мышь) - {ACFF36}"..tostring(targID))
+		imgui.TextColoredRGB(u8("{C1C1C1} - последний ID игрока, на которого целился (наведена мышь) - {ACFF36}"..tostring(targID)))
 		--
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), "{pause}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{pause}") end
-		imgui.TextColoredRGB("{C1C1C1} - создание паузы между отправки строки в чат. {EC3F3F}Прописывать отдельно, т.е. с новой строки.")
+		imgui.TextColoredRGB(u8("{C1C1C1} - создание паузы между отправки строки в чат. {EC3F3F}Прописывать отдельно, т.е. с новой строки."))
 		--
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), u8"{sleep:время}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{sleep:1000}") end
-		imgui.TextColoredRGB("{C1C1C1} - Задаёт свой интервал времени между строчками. \n\tПример: {sleep:2500}, где 2500 время в мс (1 сек = 1000 мс)")
+		imgui.TextColoredRGB(u8("{C1C1C1} - Задаёт свой интервал времени между строчками. \n\tПример: {sleep:2500}, где 2500 время в мс (1 сек = 1000 мс)"))
 
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), u8"{sex:текст1|текст2}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{sex:text1|text2}") end
-		imgui.TextColoredRGB("{C1C1C1} - Возвращает текст в зависимости от выбранного пола.  \n\tПример, {sex:понял|поняла}, вернёт 'понял', если выбран мужской пол или 'поняла', если женский")
+		imgui.TextColoredRGB(u8("{C1C1C1} - Возвращает текст в зависимости от выбранного пола.  \n\tПример, {sex:понял|поняла}, вернёт 'понял', если выбран мужской пол или 'поняла', если женский"))
 
 		imgui.Spacing()
 		imgui.TextColored(imgui.ImVec4(1,0.52,0,1), u8"{getNickByID:ид игрока}")
 		imgui.SameLine()
 		if imgui.IsItemClicked(0) then setClipboardText("{getNickByID:}") end
-		imgui.TextColoredRGB("{C1C1C1} - Возращает ник игрока по его ID. \n\tПример, {getNickByID:25}, вернёт ник игрока под ID 25.)")
+		imgui.TextColoredRGB(u8("{C1C1C1} - Возращает ник игрока по его ID. \n\tПример, {getNickByID:25}, вернёт ник игрока под ID 25.)"))
 
 
-	--	imgui.TextColoredRGB("")
+	--	imgui.TextColoredRGB(u8(""))
 			-- imgui.Spacing()
 			-- imgui.Bullet()
-			-- imgui.TextColoredRGB("{FF8400}{dialog}{C1C1C1} - создание собстрвенных диалогов. Более подробно ниже:")
+			-- imgui.TextColoredRGB(u8("{FF8400}{dialog}{C1C1C1} - создание собстрвенных диалогов. Более подробно ниже:"))
 			-- imgui.Spacing()
 			-- imgui.Spacing()
 			-- if imgui.TreeNode(u8"Интрукция по пользованию параметром {dialog}") then
@@ -2308,16 +2308,16 @@ function imgui.OnDrawFrame()
 			-- 	imgui.EndGroup()
 			-- 	imgui.SameLine()
 			-- 	imgui.BeginGroup()
-			-- 			imgui.TextColoredRGB("{FF8400}{dialog}	{FFFFFF}- {EF5454}обязательный параметр{FFFFFF}, указывающий начало конструкции \nдиалога. Название прописывается после \"=\"(равно)")
-			-- 			imgui.TextColoredRGB("{FF8400}[name]=	{FFFFFF}- необязательный параметр. Указывает название самого диалога.\n Название прописывается после \"=\"(равно)")
-			-- 			imgui.TextColoredRGB("{FF8400}[1]= 		{FFFFFF}- Квадратные скорби с номером выбором являются обязятельным\n требованием. Доступно до 9 вариантов выбора. После \"=\"(равно) указывать\n текст не обязательно.")
-			-- 			imgui.TextColoredRGB("{FF8400}{dialogEnd}	{FFFFFF}- {EF5454}обязательный параметр{FFFFFF}, указывающий на конец конструкции \nдиалога.")
-			-- 			imgui.TextColoredRGB("Все необязательные параметры являются не критичными, но рекомендуется\n их указывать для визуального понимания.")
+			-- 			imgui.TextColoredRGB(u8("{FF8400}{dialog}	{FFFFFF}- {EF5454}обязательный параметр{FFFFFF}, указывающий начало конструкции \nдиалога. Название прописывается после \"=\"(равно)"))
+			-- 			imgui.TextColoredRGB(u8("{FF8400}[name]=	{FFFFFF}- необязательный параметр. Указывает название самого диалога.\n Название прописывается после \"=\"(равно)"))
+			-- 			imgui.TextColoredRGB(u8("{FF8400}[1]= 		{FFFFFF}- Квадратные скорби с номером выбором являются обязятельным\n требованием. Доступно до 9 вариантов выбора. После \"=\"(равно) указывать\n текст не обязательно."))
+			-- 			imgui.TextColoredRGB(u8("{FF8400}{dialogEnd}	{FFFFFF}- {EF5454}обязательный параметр{FFFFFF}, указывающий на конец конструкции \nдиалога."))
+			-- 			imgui.TextColoredRGB(u8("Все необязательные параметры являются не критичными, но рекомендуется\n их указывать для визуального понимания."))
 						
 						
-			-- 			--imgui.TextColoredRGB("")
+			-- 			--imgui.TextColoredRGB(u8(""))
 			-- 	imgui.EndGroup()
-			-- 		imgui.TextColoredRGB("{F03636}Примечания: \n{FFFFFF}1. Текст для указанного номера отыгровки прописывать с новой строчки после номера пукнта. \n(Указано в примере)\n2. Перед и после конструкции диалога можно прописывать обычные отыгровки, а также создавать \nдополнительные диалоги.\n3. Не допускается создавать диалоги внутри самой конструкции диалога.")
+			-- 		imgui.TextColoredRGB(u8("{F03636}Примечания: \n{FFFFFF}1. Текст для указанного номера отыгровки прописывать с новой строчки после номера пукнта. \n(Указано в примере)\n2. Перед и после конструкции диалога можно прописывать обычные отыгровки, а также создавать \nдополнительные диалоги.\n3. Не допускается создавать диалоги внутри самой конструкции диалога."))
 			-- 	imgui.TreePop()
 			---end
 		
@@ -2435,65 +2435,65 @@ function imgui.OnDrawFrame()
 					imgui.Text(u8"Имя:")
 						if sobes.player.name == "" then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							imgui.SameLine()
-							imgui.TextColoredRGB("{FFCD00}"..sobes.player.name)
+							imgui.TextColoredRGB(u8("{FFCD00}"..sobes.player.name))
 						end
 					imgui.Bullet()
 					imgui.Text(u8"Лет в штате:")
 						if sobes.player.let == 0 then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.let >= 3 then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.let.."/3")
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.let.."/3"))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.let.."{17E11D}/3")
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.let.."{17E11D}/3"))
 							end
 						end
 					imgui.Bullet()
 					imgui.Text(u8"Законопослушность:")
 						if sobes.player.zak == 0 then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.zak >= 35 then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.zak.."/35")
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.zak.."/35"))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.zak.."{17E11D}/35")
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.zak.."{17E11D}/35"))
 							end
 						end
 					imgui.Bullet()
 					imgui.Text(u8"Имеет работу:")
 						if sobes.player.work == "" then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.work == "Без работы" then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.work)
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.work))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.work)
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.work))
 							end
 						end
 					imgui.Bullet()
 					imgui.Text(u8"Состоит в ЧС:")
 						if sobes.player.bl == "" then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.bl == "Не найден(а)" then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.bl)
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.bl))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.bl)
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.bl))
 							end
 						end
 					imgui.Spacing()
@@ -2501,28 +2501,28 @@ function imgui.OnDrawFrame()
 					imgui.Text(u8"Здоровье:")
 						if sobes.player.heal == "" then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.heal == "Здоров" then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.heal)
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.heal))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.heal)
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.heal))
 							end
 						end
 					imgui.Bullet()
 					imgui.Text(u8"Наркозависимость:")
 						if sobes.player.narko == 0.1 then
 							imgui.SameLine()
-							imgui.TextColoredRGB("{F55534}нет")
+							imgui.TextColoredRGB(u8("{F55534}нет"))
 						else
 							if sobes.player.narko == 0 then
 								imgui.SameLine()
-								imgui.TextColoredRGB("{17E11D}"..sobes.player.narko.."/0")
+								imgui.TextColoredRGB(u8("{17E11D}"..sobes.player.narko.."/0"))
 							else
 								imgui.SameLine()
-								imgui.TextColoredRGB("{F55534}"..sobes.player.narko.."{17E11D}/0")
+								imgui.TextColoredRGB(u8("{F55534}"..sobes.player.narko.."{17E11D}/0"))
 							end
 						end
 				imgui.EndChild()
@@ -2581,13 +2581,13 @@ function imgui.OnDrawFrame()
 				imgui.PushStyleColor(imgui.Col.PopupBg, imgui.ImVec4(0.06, 0.06, 0.06, 0.94))
 					if imgui.BeginPopup("helpsob") then
 						imgui.Text(u8"\t\t\t\t\t\tНебольшая инструкция по пользованию.")
-						imgui.TextColoredRGB(helpsob)
+						imgui.TextColoredRGB(u8(helpsob))
 					imgui.EndPopup()
 					end
 				imgui.PopStyleColor(1)
 				imgui.BeginChild("log chat in", imgui.ImVec2(0, 280), true)
 					for i,v in ipairs(sobes.logChat) do
-						imgui.TextColoredRGB(v)
+						imgui.TextColoredRGB(u8(v))
 					end
 					imgui.SetScrollY(imgui.GetScrollMaxY())
 				imgui.EndChild()
@@ -2777,7 +2777,7 @@ function imgui.OnDrawFrame()
 							imgui.Text(u8"Также можете сами добавить или \nизменять новости.")
 
 							imgui.SetCursorPos(imgui.ImVec2(140, 297))
-							imgui.TextColoredRGB("{29EB2F}Папка")
+							imgui.TextColoredRGB(u8("{29EB2F}Папка"))
 							if imgui.IsItemHovered() then 
 								imgui.SetTooltip(u8"Кликните, чтобы открыть папку.")
 							end
@@ -2866,7 +2866,7 @@ function imgui.OnDrawFrame()
 				if imgui.IsItemClicked(1) then dep.dlog = {} end
 					imgui.BeginChild("dep logg", imgui.ImVec2(0, 260), true)
 						for i,v in ipairs(dep.dlog) do
-							imgui.TextColoredRGB(v)
+							imgui.TextColoredRGB(u8(v))
 						end
 						imgui.SetScrollY(imgui.GetScrollMaxY())
 					imgui.EndChild()
@@ -2906,16 +2906,16 @@ function imgui.OnDrawFrame()
 			imgui.Dummy(imgui.ImVec2(0, 10))
 			if #updinfo < 5 then
 				imgui.SetCursorPos(imgui.ImVec2(242, 150))
-				imgui.TextColoredRGB("{72F566}Обновлений не обнаружено")
+				imgui.TextColoredRGB(u8("{72F566}Обновлений не обнаружено"))
 				imgui.SetCursorPosX(212)
-				imgui.TextColoredRGB("{72F566}Вы используете самую новую версию")
+				imgui.TextColoredRGB(u8("{72F566}Вы используете самую новую версию"))
 			else
 				if newversion == scr.version then
 					imgui.SetCursorPosX(120)
 					imgui.TextColored(imgui.ImColor(0, 255, 0, 225):GetVec4(), fa.ICON_CHECK); imgui.SameLine()
-					imgui.TextColoredRGB("Вы используете последнее обновление. Текущая версия: {72F566}"..scr.version)
+					imgui.TextColoredRGB(u8("Вы используете последнее обновление. Текущая версия: {72F566}"..scr.version))
 					imgui.SetCursorPosX(222)
-					imgui.TextColoredRGB("{F8A436}Что было добавлено в прошлый раз: ")
+					imgui.TextColoredRGB(u8("{F8A436}Что было добавлено в прошлый раз: "))
 					imgui.Spacing()
 					imgui.BeginChild("update log", imgui.ImVec2(0, 0), true)
 						if doesFileExist(dirml.."/MedicalHelper/files/update.txt") then
@@ -2927,11 +2927,11 @@ function imgui.OnDrawFrame()
 				else
 					imgui.SetCursorPosX(182) 
 					imgui.TextColored(imgui.ImColor(255, 200, 0, 225):GetVec4(), fa.ICON_EXCLAMATION_TRIANGLE); imgui.SameLine()
-					imgui.TextColoredRGB("Вы используете устаревшую версию скрипта.")
+					imgui.TextColoredRGB(u8("Вы используете устаревшую версию скрипта."))
 					imgui.SetCursorPosX(212) 
-					imgui.TextColoredRGB("Новая версия: {72F566}"..newversion.."{FFFFFF}. Текущая Ваша: {EE4747}"..scr.version)
+					imgui.TextColoredRGB(u8("Новая версия: {72F566}"..newversion.."{FFFFFF}. Текущая Ваша: {EE4747}"..scr.version))
 					imgui.SetCursorPosX(282)
-					imgui.TextColoredRGB("{F8A436}Что было добавлено:")
+					imgui.TextColoredRGB(u8("{F8A436}Что было добавлено:"))
 					imgui.Spacing()
 					imgui.BeginChild("update log", imgui.ImVec2(0, 230), true)
 						if doesFileExist(dirml.."/MedicalHelper/files/update.txt") then
@@ -2945,7 +2945,7 @@ function imgui.OnDrawFrame()
 				end
 			end
 		--	imgui.Bullet(); imgui.SameLine()
-		--	imgui.TextColoredRGB("Было изменено вывфыв ывфывфывыв ыфвфывфы ыфвфывфы ")
+		--	imgui.TextColoredRGB(u8("Было изменено вывфыв ывфывфывыв ыфвфывфы ыфвфывфы "))
 		imgui.End()
 	end
 	if mcEditWin.v then
@@ -3153,7 +3153,7 @@ function imgui.OnDrawFrame()
 Пример: На сервере игрок {6AD7F0}Nick_Name{FFFFFF} с id - 25.
 {ACFF36}{getNickByID:25}{FFFFFF} вернёт - {6AD7F0}Nick Name.
 			]]
-			imgui.TextColoredRGB(vt1)
+			imgui.TextColoredRGB(u8(vt1))
 
 			imgui.BeginGroup()
 				imgui.TextDisabled(u8"					Пример")
@@ -3164,16 +3164,16 @@ function imgui.OnDrawFrame()
 			imgui.EndGroup()
 			imgui.SameLine()
 			imgui.BeginGroup()
-				imgui.TextColoredRGB(vt2)
+				imgui.TextColoredRGB(u8(vt2))
 				if imgui.Button(u8"Список клавиш", imgui.ImVec2(150,25)) then
 					imgui.OpenPopup("helpdkey")
 				end
 			imgui.EndGroup()
-			imgui.TextColoredRGB(vt3)
+			imgui.TextColoredRGB(u8(vt3))
 			------
 			if imgui.BeginPopup("helpdkey") then
 				imgui.BeginChild("helpdkey", imgui.ImVec2(290,320))
-					imgui.TextColoredRGB("{FFCD00}Кликните, чтобы скопировать")
+					imgui.TextColoredRGB(u8("{FFCD00}Кликните, чтобы скопировать"))
 					imgui.BeginGroup()
 						for _,v in ipairs(helpd.key) do
 							if imgui.Selectable(u8("["..v.k.."] 	-	"..v.n)) then
