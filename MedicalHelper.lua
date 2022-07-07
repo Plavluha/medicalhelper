@@ -1907,7 +1907,7 @@ function imgui.OnDrawFrame()
 					imgui.SetCursorPosX(280)
 					imgui.Text(u8"Medical Helper")
 					imgui.Spacing()
-					imgui.TextWrapped(u8"\tСкрипт был разработан для проекта Ariona Role Play с поддержкой работы на сервере Saint Rose для облегчения работы сотрудникам больниц. Благодаря этому приложению Вы получите полный комплекс автоматизации многих действий и наслаждение от пользования.\nОбновления выходят по мере добавления нововведений и исправлений ошибок.")
+					imgui.TextWrapped(u8"\tСкрипт был разработан для проекта Ariona Role Play с поддержкой работы на сервере Brainburg для облегчения работы сотрудникам больниц. Благодаря этому приложению Вы получите полный комплекс автоматизации многих действий и наслаждение от пользования.\nОбновления выходят по мере добавления нововведений и исправлений ошибок.")
 					imgui.Dummy(imgui.ImVec2(0, 10))
 					imgui.Bullet()
 					imgui.TextColoredRGB(u8("Разработчик - {FFB700}Kevin Hatiko (edit by Neddie Barlow)"))
@@ -1927,12 +1927,18 @@ function imgui.OnDrawFrame()
 							if imgui.IsItemHovered() then imgui.SetTooltip(u8"Кликните ЛКМ, чтобы скопировать, или ПКМ, чтобы открыть в браузере")  end
 							if imgui.IsItemClicked(0) then setClipboardText("https://vk.com/plavluha") end
 							if imgui.IsItemClicked(1) then print(shell32.ShellExecuteA(nil, 'open', 'https://vk.com/plavluha', nil, nil, 1)) end
+						imgui.SameLine()
+						imgui.TextColoredRGB(u8("{68E15D}(наведи){FFFFFF}\nНажав на странице на {74BAF4}\"Написать сообщение\""))
+						imgui.SetCursorPosX(20)
+						imgui.Text(fa.ICON_LINK)
+						imgui.SameLine()
+						imgui.TextColoredRGB(u8("Для связи: DS: {74BAF4}BEBRA#6666"))
+							if imgui.IsItemHovered() then imgui.SetTooltip(u8"Кликните ЛКМ, чтобы скопировать")  end
+							if imgui.IsItemClicked(0) then setClipboardText("BEBRA#6666") end
 							imgui.SameLine()
-							imgui.TextColoredRGB(u8("{68E15D}(наведи){FFFFFF}  Нажав в группе на {74BAF4}\"Написать сообщение\""))
+							imgui.TextColoredRGB(u8("{68E15D}(наведи){FFFFFF}\nНажав в дискорде на {74BAF4}\"Написать сообщение\""))
 						imgui.Spacing()
 						imgui.SetCursorPosX(20)
-						imgui.TextColored(imgui.ImColor(18, 220, 0, 200):GetVec4(), fa.ICON_MONEY)
-							
 						imgui.Dummy(imgui.ImVec2(0, 130))
 						if imgui.Button(u8"Отключить", imgui.ImVec2(160, 20)) then showCursor(false); scr:unload() end
 						imgui.SameLine()
