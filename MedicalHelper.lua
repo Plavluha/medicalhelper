@@ -1939,7 +1939,7 @@ function imgui.OnDrawFrame()
 							imgui.TextColoredRGB(u8("{68E15D}(наведи){FFFFFF}\nНажав в дискорде на {74BAF4}\"Написать сообщение\""))
 						imgui.Spacing()
 						imgui.SetCursorPosX(20)
-						imgui.Dummy(imgui.ImVec2(0, 130))
+						imgui.Dummy(imgui.ImVec2(0, 90))
 						if imgui.Button(u8"Отключить", imgui.ImVec2(160, 20)) then showCursor(false); scr:unload() end
 						imgui.SameLine()
 						if imgui.Button(u8"Перезагрузить", imgui.ImVec2(160, 20)) then showCursor(false); scr:reload() end
